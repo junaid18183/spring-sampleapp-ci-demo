@@ -11,6 +11,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.rean.sampleapplication.SpringBootCRUDApp</start-class>
 	</properties>
+	<properties>
+  <sonar.projectKey>junaid18183_spring-sampleapp-ci-demo</sonar.projectKey>
+  <sonar.organization>junaid18183</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
