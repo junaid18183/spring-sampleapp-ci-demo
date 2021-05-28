@@ -21,3 +21,26 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+.buildpath
+.bundle
+.DS_Files
+.DS_Store
+.envrc
+.kitchen
+.project
+.terraform
+.vscode
+*.tfstate
+*.tfstate.backup
+audit/*/vendor
+packer_cache
+TAGS
+target
+terraform.d
+test/*/vendor
+vars*.json
+vendor
+vendor-cookbooks
+# Adding Gemfile.lock to .gitignore to always pull the latest branch of pipeline-tasks / docker-tasks from github
+Gemfile.lock
