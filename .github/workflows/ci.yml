@@ -1,34 +1,59 @@
-name: Build and Publish Docker image
-
-on:
-  push:
-    branches:
-      - 'main'
-
-jobs:
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GHCR
-        uses: docker/login-action@v1 
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_ACCESS_TOKEN }}
-      -
-        name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: myapp:latest
-      -
-        name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+  name: Build and Publish Docker image
+  on:
+    push:
+      branches:
+        - main
+    pull_request:
+  jobs:
+    docker-build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Set Environment Variables
+          run: |
+            IMG="sampleapp"
+            OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+            echo "BUILD_VER=1.0.$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
+            echo "IMG=${IMG}" >> $GITHUB_ENV
+            echo "IMAGE=ghcr.io/${OWNER}/${IMG}" >> $GITHUB_ENV
+            echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+            echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
+            echo "GIT_REF=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)" >> $GITHUB_ENV
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Set up QEMU
+          uses: docker/setup-qemu-action@v1.2.0
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v1.3.0
+        - name: Login to GHCR
+          if: github.event_name != 'pull_request'
+          uses: docker/login-action@v1.9.0
+          with:
+            registry: ghcr.io
+            username: ${{ github.repository_owner }}
+            password: ${{ secrets.GHCR_ACCESS_TOKEN }}
+        - name: Docker meta
+          id: meta
+          uses: docker/metadata-action@v3.3.0
+          with:
+            images: ${{ env.IMAGE }}
+            flavor: |
+              latest=false
+            tags: |
+              type=raw,enable=true,value=${{ env.BUILD_VER }}
+            labels: |
+              org.opencontainers.image.version=${{ env.BUILD_VER }}
+        - name: build/push
+          uses: docker/bake-action@v1.4.2
+          env:
+            CONTEXT: ${{ env.IMG }}
+            DOCKERFILE: Dockerfile
+            VERSION: ${{ env.BUILD_VER }}
+            LOAD_IMAGE_IN_CI: ${{ github.event_name == 'pull_request' }}
+          with:
+            files: |
+              ./docker-bake.hcl
+              ${{ steps.meta.outputs.bake-file }}
+            targets: build
+            pull: true
+            load: ${{ github.event_name == 'pull_request' }}
+            push: ${{ github.event_name != 'pull_request' }}
