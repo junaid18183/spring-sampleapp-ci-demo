@@ -10,12 +10,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.rean.sampleapplication.SpringBootCRUDApp</start-class>
+		<sonar.projectKey>junaid18183_spring-sampleapp-ci-demo</sonar.projectKey>
+		<sonar.organization>junaid18183</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
-	<properties>
-  <sonar.projectKey>junaid18183_spring-sampleapp-ci-demo</sonar.projectKey>
-  <sonar.organization>junaid18183</sonar.organization>
-  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-</properties>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -62,9 +60,9 @@
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
-	    <artifactId>h2</artifactId>
-	    <scope>test</scope>
-	    <version>1.4.194</version>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+			<version>1.4.194</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -116,16 +114,16 @@
 				<version>1.12.0</version>
 				<configuration></configuration>
 			</plugin>
-		 <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.6.0.1398</version>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.4</version>
-      </plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.6.0.1398</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.4</version>
+			</plugin>
 			<plugin>
 				<groupId>org.eluder.coveralls</groupId>
 				<artifactId>coveralls-maven-plugin</artifactId>
@@ -174,32 +172,32 @@
 			</build>
 		</profile>
 		<profile>
-      <id>coverage</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>prepare-agent</id>
-                <goals>
-                  <goal>prepare-agent</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>report</id>
-                <goals>
-                  <goal>report</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
+			<id>coverage</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>prepare-agent</id>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>report</id>
+								<goals>
+									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
