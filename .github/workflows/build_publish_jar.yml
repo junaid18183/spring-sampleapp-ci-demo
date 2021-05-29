@@ -51,7 +51,7 @@ jobs:
     #       GITHUB_TOKEN: ${{ secrets.GHCR_ACCESS_TOKEN }}
   docker-build:
       runs-on: ubuntu-latest
-      needs: [publish_jar]
+      needs: [build_test_jar]
       steps:
         - name: Set Environment Variables
           run: |
