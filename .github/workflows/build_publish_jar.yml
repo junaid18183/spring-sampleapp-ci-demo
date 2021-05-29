@@ -95,6 +95,7 @@ jobs:
         - name: build/push
           uses: docker/bake-action@v1.4.2
           env:
+            CONTEXT: ${{ env.IMG }}
             DOCKERFILE: Dockerfile
             VERSION: ${{ env.BUILD_VER }}
             LOAD_IMAGE_IN_CI: ${{ github.event_name == 'pull_request' }}
