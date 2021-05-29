@@ -10,7 +10,7 @@ target "docker-metadata-action" {}
 
 target "build" {
   inherits   = ["docker-metadata-action"]
-  context    = context = "./"
+  context    = "./"
   dockerfile = "${DOCKERFILE}"
   args = {
     VERSION = "${VERSION}"
