@@ -44,3 +44,5 @@ vendor
 vendor-cookbooks
 # Adding Gemfile.lock to .gitignore to always pull the latest branch of pipeline-tasks / docker-tasks from github
 Gemfile.lock
+.classpath
+.settings/*
