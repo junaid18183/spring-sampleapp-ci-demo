@@ -9,7 +9,7 @@ ARG REAN_PLATFORM_USER=reanplatform
 ARG REAN_PLATFORM_GROUP=reanplatform
 ARG REAN_PLATFORM_HOME=/opt/${REAN_PLATFORM_USER}
 
-FROM openjdk:11-jdk-slim
+FROM openjdk:16-jdk-slim
 COPY --from=build /workspace/target/*.war app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
