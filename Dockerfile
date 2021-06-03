@@ -5,11 +5,7 @@ COPY pom.xml /workspace
 COPY src /workspace/src
 RUN mvn -B -f pom.xml clean package -DskipTests
 
-ARG REAN_PLATFORM_USER=reanplatform
-ARG REAN_PLATFORM_GROUP=reanplatform
-ARG REAN_PLATFORM_HOME=/opt/${REAN_PLATFORM_USER}
-
-FROM openjdk:11.0.11-jre
+FROM openjdk:8-jre
 COPY --from=build /workspace/target/*.war app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
