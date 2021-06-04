@@ -37,7 +37,8 @@ jobs:
         run: mvn -B clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  docker-build:
+  docker-publish:
+      needs: build_test_jar
       runs-on: ubuntu-latest
       steps:
         - name: Set Environment Variables
