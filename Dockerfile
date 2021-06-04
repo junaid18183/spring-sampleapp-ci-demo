@@ -6,7 +6,7 @@ COPY src /workspace/src
 RUN mvn -B -f pom.xml clean package -DskipTests
 
 FROM junaid18183/jre1.8:2.0.0
-COPY --from=build /workspace/target/*.war app.jar
+COPY --from=build /workspace/target/sampleapplication.war app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
 
