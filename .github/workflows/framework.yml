@@ -1,0 +1,38 @@
+name: UnitTests
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.5
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - run: bundle config path vendor/bundle
+    - name: set Bundler
+      env:
+        ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+        ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
+        ARTIFACTORY_ENDPOINT: ${{ secrets.ARTIFACTORY_ENDPOINT }}
+      run: bundle config mirror.https://rubygems.org https://$ARTIFACTORY_USERNAME:$ARTIFACTORY_API_KEY@$ARTIFACTORY_ENDPOINT/artifactory/api/gems/virtual-rubygems
+    - name: Install dependencies
+      run: bundle install
+    - name: build
+      env:
+        ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+        ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
+        ARTIFACTORY_INSPEC_URL: ${{ secrets.ARTIFACTORY_INSPEC_URL }}
+      run: bundle exec rake build
