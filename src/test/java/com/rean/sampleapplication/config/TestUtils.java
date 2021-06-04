@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.config;
+package com.junaid18183.sampleapplication.config;
 
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.RequestBuilder;

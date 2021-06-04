@@ -1,4 +1,4 @@
-package com.rean.sampleapplication;
+package com.junaid18183.sampleapplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,12 +8,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
-import com.rean.sampleapplication.configuration.JpaConfiguration;
+import com.junaid18183.sampleapplication.configuration.JpaConfiguration;
 
 @Configuration
 @ComponentScan
 @Import(JpaConfiguration.class)
-@SpringBootApplication(scanBasePackages={"com.rean.sampleapplication"})
+@SpringBootApplication(scanBasePackages={"com.junaid18183.sampleapplication"})
 	public class SpringBootCRUDApp extends SpringBootServletInitializer implements WebApplicationInitializer {
 
 	    @Override

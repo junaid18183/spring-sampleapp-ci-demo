@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.controller;
+package com.junaid18183.sampleapplication.controller;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.rean.sampleapplication.model.User;
-import com.rean.sampleapplication.service.UserService;
-import com.rean.sampleapplication.util.CustomErrorType;
+import com.junaid18183.sampleapplication.model.User;
+import com.junaid18183.sampleapplication.service.UserService;
+import com.junaid18183.sampleapplication.util.CustomErrorType;
 
 @RestController
 @RequestMapping("/api")

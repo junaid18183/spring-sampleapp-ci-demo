@@ -1,8 +1,8 @@
-package com.rean.sampleapplication.service;
+package com.junaid18183.sampleapplication.service;
 
 import java.util.List;
 
-import com.rean.sampleapplication.model.User;
+import com.junaid18183.sampleapplication.model.User;
 
 //@Service
 public interface UserService {

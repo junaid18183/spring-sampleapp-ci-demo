@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.model;
+package com.junaid18183.sampleapplication.model;
 
 import java.io.Serializable;
 

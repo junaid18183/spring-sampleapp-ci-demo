@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.configuration;
+package com.junaid18183.sampleapplication.configuration;
 
 import java.util.Properties;
 
@@ -28,7 +28,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.rean.sampleapplication.repositories",
+@EnableJpaRepositories(basePackages = "com.junaid18183.sampleapplication.repositories",
 		entityManagerFactoryRef = "entityManagerFactory",
 		transactionManagerRef = "transactionManager")
 @EnableTransactionManagement
@@ -72,7 +72,7 @@ public class JpaConfiguration {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(dataSource());
-		factoryBean.setPackagesToScan(new String[] { "com.rean.sampleapplication.model" });
+		factoryBean.setPackagesToScan(new String[] { "com.junaid18183.sampleapplication.model" });
 		factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
 		factoryBean.setJpaProperties(jpaProperties());
 		return factoryBean;

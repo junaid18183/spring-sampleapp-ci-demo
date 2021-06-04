@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.service;
+package com.junaid18183.sampleapplication.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rean.sampleapplication.model.User;
-import com.rean.sampleapplication.repositories.UserRepository;
+import com.junaid18183.sampleapplication.model.User;
+import com.junaid18183.sampleapplication.repositories.UserRepository;
 
 
 
