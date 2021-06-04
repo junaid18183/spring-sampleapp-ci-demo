@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.controller;
+package com.junaid18183.sampleapplication.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.controller;
+package com.junaid18183.sampleapplication.controller;
 
 import static org.mockito.Matchers.*;
 
@@ -18,9 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.rean.sampleapplication.config.TestUtils;
-import com.rean.sampleapplication.model.User;
-import com.rean.sampleapplication.service.UserService;
+import com.junaid18183.sampleapplication.config.TestUtils;
+import com.junaid18183.sampleapplication.model.User;
+import com.junaid18183.sampleapplication.service.UserService;
 
 @WebMvcTest(value = RestApiController.class, secure = false)
 public class AppControllerTest {

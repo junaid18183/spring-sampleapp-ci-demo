@@ -1,4 +1,4 @@
-package com.rean.sampleapplication;
+package com.junaid18183.sampleapplication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

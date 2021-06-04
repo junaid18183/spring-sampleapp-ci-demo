@@ -1,4 +1,4 @@
-package com.rean.sampleapplication.util;
+package com.junaid18183.sampleapplication.util;
 
 
 public class CustomErrorType {
