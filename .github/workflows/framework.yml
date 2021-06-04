@@ -7,7 +7,7 @@ on:
     branches: [ develop ]
 
 jobs:
-  test:
+  docker_build_framework:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -36,3 +36,9 @@ jobs:
         ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
         ARTIFACTORY_INSPEC_URL: ${{ secrets.ARTIFACTORY_INSPEC_URL }}
       run: bundle exec rake build
+    - name: test
+      env:
+        ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+        ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
+        ARTIFACTORY_INSPEC_URL: ${{ secrets.ARTIFACTORY_INSPEC_URL }}
+      run: bundle exec rake test
